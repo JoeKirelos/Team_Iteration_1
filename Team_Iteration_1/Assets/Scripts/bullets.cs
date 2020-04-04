@@ -4,24 +4,47 @@ using UnityEngine;
 
 public class bullets : MonoBehaviour
 {
+    public GameObject playerPower;
     public Transform player;
     public float speed;
     public Rigidbody2D rb;
     public GameObject self;
     Vector3 target;
+    public bool sent;
     // Start is called before the first frame update
     void Start()
     {
+        sent = false;
+        playerPower = GameObject.FindWithTag("Player");
         player = GameObject.FindWithTag("Player").transform;
-        target = (transform.position - player.position);
+        target = (transform.position - player.position).normalized;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position -= target* speed * Time.deltaTime;
+        Move();
+        if (playerPower.GetComponent<Player>().nuked|| playerPower.GetComponent<Player>().blanked)
+        {
+            DestroySelf();
+        }
+        if (playerPower.GetComponent<Player>().forced)
+        {
+            sent = true;
+        }
     }
 
+    public void Move()
+    {
+        if (sent)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed*Time.deltaTime);
+        }
+        else
+        {
+        transform.position -= target * speed * Time.deltaTime;
+        }
+    }
     public void DestroySelf()
     {
         Destroy(self);
@@ -37,6 +60,17 @@ public class bullets : MonoBehaviour
         {
             collision.GetComponent<Player>().TakeDamage();
             Destroy(self);
+        }
+        if (sent)
+        {
+            if (collision.CompareTag("EnemyA"))
+            {
+                collision.GetComponent<enemyA>().DestroySelf();
+            }
+            if (collision.CompareTag("EnemyB"))
+            {
+                collision.GetComponent<enemyB>().DestroySelf();
+            }
         }
     }
 }

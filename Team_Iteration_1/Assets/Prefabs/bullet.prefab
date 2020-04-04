@@ -116,10 +116,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d27b1334733fc24f911cf986e6b7232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPower: {fileID: 0}
   player: {fileID: 3525980068662496567, guid: b65be2e357cb5294a873a688b704f7fb, type: 3}
-  speed: 2
+  speed: 50
   rb: {fileID: 2219090658191290101}
   self: {fileID: 2219090658191290107}
+  sent: 0
 --- !u!58 &-1004446124812699148
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -45,4 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5574035660125077447, guid: 6b973f70e5f6802469a87ee4446b0fe1,
     type: 3}
+  enemyBPrefab: {fileID: 5675716875424961639, guid: 9e42d2a78ca619548b5a38c25cf07bab,
+    type: 3}
   spawnPoint: {fileID: 3085055680384776721}
+  shootingInt: 0
+  randomizerEnemyInt: 0
+  bounceEnemyInt: 0
+  enemyInitialShoot: 0
+  movement: {x: 1, y: 1, z: 0}
+  speed: 0
+  self: {fileID: 3085055680384776723}

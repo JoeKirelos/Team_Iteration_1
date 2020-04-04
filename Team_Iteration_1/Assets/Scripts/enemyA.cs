@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : MonoBehaviour
+public class enemyA : MonoBehaviour
 {
+    public GameObject playerNuke;
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;
@@ -27,9 +28,10 @@ public class enemy : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
-        Invoke("PseudoRandom", bounceInt);
-        Invoke("Bounce", randomizerInt);
-        Invoke("Shoot", initialShoot);
+        playerNuke = GameObject.FindWithTag("Player");
+        StartCoroutine(PseudoRandom());
+        StartCoroutine(Bounce());
+        StartCoroutine(Shoot());
 
         GetComponent<AudioSource>().clip = spitting;
         GetComponent<AudioSource>().playOnAwake = false;
@@ -50,9 +52,16 @@ public class enemy : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
         }
+        if (playerNuke.GetComponent<Player>().nuked)
+        {
+            DestroySelf();
+        }
     }
-    void PseudoRandom()
+    IEnumerator PseudoRandom()
     {
+        while (true)
+        {
+            yield return new WaitForSeconds(randomizerInt);
         int randomizer = Random.Range(5, 10);
         if (retreatDistance+10 >= stoppingDistance)
         {
@@ -61,27 +70,33 @@ public class enemy : MonoBehaviour
         {
             retreatDistance += randomizer;
         }
-        Invoke("PseudoRandom", randomizerInt);
-    }
-    void Bounce()
-    {
-        if(bounceRandom == 1 )
-        {
-            bounceRandom = -bounceRandom;
         }
-        else if ( bounceRandom == -1 )
-        {
-            bounceRandom = -bounceRandom;
-        }
-        rb.velocity = (bounceVec * bounceRandom * bounce * Time.deltaTime);
-        Invoke("Bounce", bounceInt);
     }
-    void Shoot()
+    IEnumerator Bounce()
     {
-        animator.SetTrigger("Shoot");
-        Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
-        Invoke("Shoot", shootInterval);
-        GetComponent<AudioSource>().PlayOneShot(spitting);
+        while (true)
+        {
+            yield return new WaitForSeconds(bounceInt);
+            if(bounceRandom == 1 )
+            {
+                bounceRandom = -bounceRandom;
+            }
+            else if ( bounceRandom == -1 )
+            {
+                bounceRandom = -bounceRandom;
+            }
+            rb.velocity = (bounceVec * bounceRandom * bounce * Time.deltaTime);
+        }
+    }
+    IEnumerator Shoot()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(shootInterval);
+            animator.SetTrigger("Shoot");
+            Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+            GetComponent<AudioSource>().PlayOneShot(spitting);
+        }
     }
 
     public void DestroySelf()
