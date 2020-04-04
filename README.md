@@ -20,7 +20,7 @@ the blank ( space key) starts with 3 seconds cooldown, goes up 1 per use up to 7
 
 ### force 
 
-the force (rmb) has a flat 1.5 seconds cooldown. Function sends incomign projectiles flying away from the player, those bullets can kill enemies. 
+the force (rmb) has a flat 1.5 seconds cooldown. Function sends incoming projectiles flying away from the player, those bullets can kill enemies. 
 
 ## waves/level system
 
