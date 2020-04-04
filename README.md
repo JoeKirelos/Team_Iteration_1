@@ -24,4 +24,4 @@ the force (rmb) has a flat 1.5 seconds cooldown. Function sends incomign project
 
 ## waves/level system
 
-the game now starts much slower, with a spawn rate of 5 seconds on each enemy, after defeating 10 waves of enemies (40 total enemies) the spawn rate decreases by 0.5 seconds (down to 1) and the number of waves per level goes up by 2 (no cap). 
+the game now starts much slower, with a spawn rate of 5 seconds on each enemy, after defeating 10 waves of enemies (40 total enemies) the spawn rate decreases by 0.5 seconds (down to 1 minimum spawn rate) and the number of waves per level goes up by 2 (no cap on max number of waves per level). 
