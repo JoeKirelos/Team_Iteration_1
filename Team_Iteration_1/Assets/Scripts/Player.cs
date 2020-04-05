@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public Transform firePoint;
     public LineRenderer lr;
     public static int hitPoints = 20;
+    public static int enemiesKilled = 0;
 
     public AudioClip shooting;
     public AudioClip enemyDeath;
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         hitPoints = 20;
+        enemiesKilled = 0;
         lr.enabled = false;
         GetComponent<AudioSource>().clip = shooting;
         GetComponent<AudioSource>().clip = enemyDeath;
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
         StartCoroutine(Nuke());
         StartCoroutine(Blank());
         StartCoroutine(Force());
+        Debug.Log(blankStart);
     }
     IEnumerator Nuke()
     {
@@ -125,14 +128,17 @@ public class Player : MonoBehaviour
                 if( enemyA != null)
                 {
                     enemyA.DestroySelf();
-                    hitPoints++;
+                    enemiesKilled++;
+                    
+                    
                     GetComponent<AudioSource>().PlayOneShot(enemyDeath);
                 }
                 enemyB enemyB = hitInfo.transform.GetComponent<enemyB>();
                 if (enemyB != null)
                 {
                     enemyB.DestroySelf();
-                    hitPoints++;
+                    
+                    enemiesKilled++;
                     GetComponent<AudioSource>().PlayOneShot(enemyDeath);
                 }
                 bullets bullet = hitInfo.transform.GetComponent<bullets>();
@@ -162,7 +168,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage()
     {
-        hitPoints-= 4;
+        hitPoints-= 2;
     }
 
     void EndGame()

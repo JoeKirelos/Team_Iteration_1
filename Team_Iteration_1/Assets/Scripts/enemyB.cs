@@ -18,6 +18,7 @@ public class enemyB : MonoBehaviour
     public bool shooting = false;
     public GameObject self;
     public AudioClip gunshot;
+    public AudioClip windup;
     public float trackingUpdate;
     public float tracker;
 
@@ -33,6 +34,7 @@ public class enemyB : MonoBehaviour
         trackingLR.enabled = false;
         shootingLR.enabled = false;
         GetComponent<AudioSource>().clip = gunshot;
+        GetComponent<AudioSource>().clip = windup;
         GetComponent<AudioSource>().playOnAwake = false;
     }
 
@@ -63,6 +65,7 @@ public class enemyB : MonoBehaviour
             {
                 trackingLR.SetPosition(0, firePoint.position);
                 trackingLR.SetPosition(1, firePoint.position + firePoint.up * 100);
+                GetComponent<AudioSource>().PlayOneShot(windup);
             }
 
         }
