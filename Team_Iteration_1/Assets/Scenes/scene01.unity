@@ -1917,7 +1917,7 @@ PrefabInstance:
     - target: {fileID: 3525980068662496521, guid: b65be2e357cb5294a873a688b704f7fb,
         type: 3}
       propertyPath: blankCD
-      value: -3
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3525980068662496521, guid: b65be2e357cb5294a873a688b704f7fb,
         type: 3}
@@ -1934,6 +1934,16 @@ PrefabInstance:
       propertyPath: blankController
       value: 
       objectReference: {fileID: 739109742}
+    - target: {fileID: 3525980068662496521, guid: b65be2e357cb5294a873a688b704f7fb,
+        type: 3}
+      propertyPath: blankStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525980068662496521, guid: b65be2e357cb5294a873a688b704f7fb,
+        type: 3}
+      propertyPath: nukeStart
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 3525980068662496522, guid: b65be2e357cb5294a873a688b704f7fb,
         type: 3}
       propertyPath: m_Name

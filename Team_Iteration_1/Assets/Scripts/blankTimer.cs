@@ -7,9 +7,13 @@ public class blankTimer : MonoBehaviour
 {
 
     public Text Blast;
+    // pass blankCD (float variable) from player object to this variable
     public float cooldown;
-    public float cooldownRefresh;
+    // pass blankStart (float variable) from player object to this variable
     public float blankStart;
+    // calculate the two variables above and store result in this variable
+    public float cooldownRefresh; 
+    // calculate the diffrence between time.time and the cooldownRefresh variable and store it in this variable (for UI purpose)
     public float display;
 
     public GameObject player;
@@ -26,22 +30,12 @@ public class blankTimer : MonoBehaviour
         blankStart = player.GetComponent<Player>().blankStart;
         cooldown = player.GetComponent<Player>().blankCD;
         cooldownRefresh = blankStart + cooldown;
-
+        
         if (Time.time < blankStart + cooldown)
         {
             display = cooldownRefresh - Time.time;
-
         }
 
         Blast.text = "Blank Cooldown:   " + display;
-
-        //    if (Input.GetKeyDown("space") && cooldownRefresh < 0)
-        //    {
-        //        cooldownRefresh = 0;
-        //    }
-
-
-
-    
     }
 }

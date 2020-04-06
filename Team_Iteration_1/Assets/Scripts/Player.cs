@@ -80,10 +80,11 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
 
-            blankController.GetComponent<BlankController>().animator.SetTrigger("Activate");
+
         {
             if(Time.time > blankStart + blankCD)
             {
+                blankController.GetComponent<BlankController>().animator.SetTrigger("Activate");
                 //if(blankCD < 7)
                 //{
                 //    blankCD++;
