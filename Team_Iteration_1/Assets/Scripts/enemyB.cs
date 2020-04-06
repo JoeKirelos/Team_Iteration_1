@@ -65,7 +65,7 @@ public class enemyB : MonoBehaviour
             {
                 trackingLR.SetPosition(0, firePoint.position);
                 trackingLR.SetPosition(1, firePoint.position + firePoint.up * 100);
-                GetComponent<AudioSource>().PlayOneShot(windup);
+                
             }
 
         }
@@ -91,6 +91,7 @@ public class enemyB : MonoBehaviour
                 shootingLR.SetPosition(1, firePoint.up * 100);
             }
             shooting = false;
+            
             yield return 0.02f;
             shootingLR.enabled = false;
         }
@@ -101,6 +102,7 @@ public class enemyB : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(tracker);
+            GetComponent<AudioSource>().PlayOneShot(windup);
             tracking = !tracking;
             trackingLR.enabled = tracking;
             shooting = !tracking;

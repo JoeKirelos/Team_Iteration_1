@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public float forceStart = 0f;
     public bool forced = false;
     public Animator animator;
+    public GameObject blankController;
     Vector2 direction;
     Vector2 mousePosition;
     float horDir;
@@ -78,14 +79,17 @@ public class Player : MonoBehaviour
     IEnumerator Blank()
     {
         if (Input.GetKeyDown("space"))
+
+            blankController.GetComponent<BlankController>().animator.SetTrigger("Activate");
         {
             if(Time.time > blankStart + blankCD)
             {
-                if(blankCD < 7)
-                {
-                    blankCD++;
-                }
+                //if(blankCD < 7)
+                //{
+                //    blankCD++;
+                //}
                 blanked = true;
+                
                 yield return 0;
                 blanked = false;
                 blankStart = Time.time;
