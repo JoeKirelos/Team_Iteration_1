@@ -33,7 +33,7 @@ public class DeflectTimer : MonoBehaviour
                 deflectDisplay = deflectRefresh - Time.time;
             }
 
-            Deflect.text = "Deflect:   " + deflectDisplay.ToString("f0");
+            Deflect.text = "Deflect (Right Click):   " + deflectDisplay.ToString("f0");
         }
     }
 }

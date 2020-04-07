@@ -32,7 +32,7 @@ public class NukeTimer : MonoBehaviour
             nukeDisplay = nukeRefresh - Time.time;
         }
 
-        Nuke.text = "Blank Cooldown (Space):   " + nukeDisplay.ToString("f0");
+        Nuke.text = "Nuke Cooldown (E):   " + nukeDisplay.ToString("f0");
     }
 }
 
