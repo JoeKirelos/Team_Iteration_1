@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -32,6 +33,11 @@ public class Player : MonoBehaviour
     public AudioClip shooting;
     public AudioClip enemyDeath;
     public AudioClip blankActivation;
+    public AudioClip nukeActivation;
+    public AudioClip deflecting;
+
+   
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +47,11 @@ public class Player : MonoBehaviour
         GetComponent<AudioSource>().clip = shooting;
         GetComponent<AudioSource>().clip = enemyDeath;
         GetComponent<AudioSource>().clip = blankActivation;
+        GetComponent<AudioSource>().clip = nukeActivation;
+        GetComponent<AudioSource>().clip = deflecting;
         GetComponent<AudioSource>().playOnAwake = false;
+  
+        
     }
 
     // Update is called once per frame
@@ -60,6 +70,9 @@ public class Player : MonoBehaviour
         StartCoroutine(Blank());
         StartCoroutine(Force());
         Debug.Log(blankStart);
+
+
+
     }
     IEnumerator Nuke()
     {
@@ -67,10 +80,12 @@ public class Player : MonoBehaviour
         {
             if(Time.time > nukeStart + nukeCD)
             {
+                GetComponent<AudioSource>().PlayOneShot(nukeActivation);
                 if (nukeCD > 10)
                 {
                     nukeCD--;
                 }
+                
                 nuked = true;
                 yield return 0;
                 nuked = false;
@@ -106,6 +121,7 @@ public class Player : MonoBehaviour
         {
             if (Time.time > forceStart + forceCD)
             {
+                GetComponent<AudioSource>().PlayOneShot(deflecting);
                 forced = true;
                 forceStart = Time.time;
                 yield return 0;

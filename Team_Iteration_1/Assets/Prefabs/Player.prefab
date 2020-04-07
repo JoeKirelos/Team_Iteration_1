@@ -226,13 +226,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c201ee238c0db0f41a9f414da6e5eb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nukeCD: 15
+  nukeStart: 0
+  nuked: 0
+  blankCD: 3
+  blankStart: 0
+  blanked: 0
+  forceCD: 1.5
+  forceStart: 0
+  forced: 0
   animator: {fileID: 3525980068662496566}
+  blankController: {fileID: 0}
   player: {fileID: 3525980068662496520}
   speed: 20
   firePoint: {fileID: 3525980068653181775}
   lr: {fileID: 3525980067882517508}
   shooting: {fileID: 8300000, guid: bed7496a5f0947f45a32fdb454f2dcfe, type: 3}
   enemyDeath: {fileID: 8300000, guid: dc30d1215b8df9949bb813920403a014, type: 3}
+  blankActivation: {fileID: 8300000, guid: de84488f4e8b9af4eb90e4a82d4300bc, type: 3}
+  background: {fileID: 1973650870667368870, guid: a669dd70e85578a4db539c504a58b7e2,
+    type: 3}
 --- !u!50 &3525980068662496520
 Rigidbody2D:
   serializedVersion: 4
