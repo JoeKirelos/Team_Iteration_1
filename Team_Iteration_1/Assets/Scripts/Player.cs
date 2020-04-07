@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     public AudioClip shooting;
     public AudioClip enemyDeath;
+    public AudioClip blankActivation;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
         lr.enabled = false;
         GetComponent<AudioSource>().clip = shooting;
         GetComponent<AudioSource>().clip = enemyDeath;
+        GetComponent<AudioSource>().clip = blankActivation;
         GetComponent<AudioSource>().playOnAwake = false;
     }
 
@@ -85,6 +87,7 @@ public class Player : MonoBehaviour
             if(Time.time > blankStart + blankCD)
             {
                 blankController.GetComponent<BlankController>().animator.SetTrigger("Activate");
+                GetComponent<AudioSource>().PlayOneShot(blankActivation);
                 //if(blankCD < 7)
                 //{
                 //    blankCD++;
